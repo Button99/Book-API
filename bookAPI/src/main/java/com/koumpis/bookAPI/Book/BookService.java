@@ -34,7 +34,7 @@ public class BookService {
     }
 
     public void updateBook(Book book) {
-        boolean exists= bookRepository.existsById(book.getId());
+        boolean exists= bookRepository.existsById(book.getBook_id());
         if(!exists) {
             throw new IllegalStateException("This book does not exists!");
         }
