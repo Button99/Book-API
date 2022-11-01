@@ -1,19 +1,32 @@
 package com.koumpis.bookAPI.Book;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.koumpis.bookAPI.Author.Author;
+
+import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="book")
 public class Book {
     @Id
-    private Long id;
+    private Long book_id;
     private String name, kind, description, language;
     private int length;
     private double rate;
     private Date dop;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name="book_author",
+        joinColumns = {
+            @JoinColumn(name = "book_id", referencedColumnName = "book_id",
+                nullable = false, updatable = false)},
+        inverseJoinColumns= {
+            @JoinColumn(name = "author_id", referencedColumnName = "author_id",
+                nullable = false, updatable = false)})
+    private Set<Author> authors= new HashSet<>();
+
 
     public Book() {
     }
@@ -28,8 +41,8 @@ public class Book {
         this.dop = dop;
     }
 
-    public Book(Long id, String name, String kind, String description, String language, int length, double rate, Date dop) {
-        this.id = id;
+    public Book(Long book_id, String name, String kind, String description, String language, int length, double rate, Date dop) {
+        this.book_id = book_id;
         this.name = name;
         this.kind = kind;
         this.description = description;
@@ -39,12 +52,12 @@ public class Book {
         this.dop = dop;
     }
 
-    public Long getId() {
-        return id;
+    public Long getBook_id() {
+        return book_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setBook_id(Long book_id) {
+        this.book_id = book_id;
     }
 
     public String getName() {

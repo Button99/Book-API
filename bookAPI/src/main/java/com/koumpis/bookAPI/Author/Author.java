@@ -1,14 +1,12 @@
 package com.koumpis.bookAPI.Author;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="author")
 public class Author {
     @Id
-    private Long id;
+    private Long author_id;
     private String firstName, lastName;
     private int age;
 
@@ -23,18 +21,18 @@ public class Author {
     }
 
     public Author(Long id, String firstName, String lastName, int age) {
-        this.id = id;
+        this.author_id = author_id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
     }
 
-    public Long getId() {
-        return id;
+    public Long getAuthor_id() {
+        return author_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setAuthor_id(Long author_id) {
+        this.author_id = author_id;
     }
 
     public String getFirstName() {
