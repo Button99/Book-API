@@ -1,5 +1,6 @@
 package com.koumpis.bookAPI.Author;
 
+import com.koumpis.bookAPI.Book.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,5 +28,4 @@ public class AuthorService {
     public List<Author> getAuthors() {
         return authorRepository.findAll();
     }
-
 }
