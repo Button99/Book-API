@@ -23,8 +23,8 @@ public class AuthorController {
         authorService.addAuthor(author);
     }
 
-    @DeleteMapping(value = "delete")
-    public void deleteAuthor(Long authorId) {
+    @DeleteMapping(value = "/{authorId}/delete")
+    public void deleteAuthor(@PathVariable Long authorId) {
         authorService.deleteAuthor(authorId);
     }
 }
