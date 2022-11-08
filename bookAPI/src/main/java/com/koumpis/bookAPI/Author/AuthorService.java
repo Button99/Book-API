@@ -28,4 +28,12 @@ public class AuthorService {
     public List<Author> getAuthors() {
         return authorRepository.findAll();
     }
+
+    public void updateAuthor(Author author) {
+        boolean exists= authorRepository.existsById(author.getAuthor_id());
+        if(!exists) {
+            throw new IllegalStateException("This Author does not exists.");
+        }
+        authorRepository.save(author);
+    }
 }
