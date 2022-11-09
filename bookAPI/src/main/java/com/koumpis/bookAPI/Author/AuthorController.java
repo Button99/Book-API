@@ -3,6 +3,7 @@ package com.koumpis.bookAPI.Author;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value="api/v1/authors")
@@ -31,5 +32,10 @@ public class AuthorController {
     @PutMapping(value = "/update")
     public void updateAuthor(@RequestBody Author author) {
         authorService.updateAuthor(author);
+    }
+
+    @GetMapping(value = "/{authorId}")
+    public Optional<Author> getAuthor(@PathVariable Long authorId) {
+        return authorService.getAuthor(authorId);
     }
 }

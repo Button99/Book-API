@@ -1,10 +1,9 @@
 package com.koumpis.bookAPI.Author;
 
-import com.koumpis.bookAPI.Book.Book;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AuthorService {
@@ -35,5 +34,14 @@ public class AuthorService {
             throw new IllegalStateException("This Author does not exists.");
         }
         authorRepository.save(author);
+    }
+
+    public Optional<Author> getAuthor(Long authorId) {
+        boolean exists= authorRepository.existsById(authorId);
+
+        if(!exists) {
+            throw new IllegalStateException("This Author does not exists");
+        }
+        return authorRepository.findById(authorId);
     }
 }
